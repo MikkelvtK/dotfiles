@@ -45,14 +45,14 @@ local function status_line()
   local fileinfo = MiniStatusline.section_fileinfo({ trunc_width = 120 })
   local location = MiniStatusline.section_location({ trunc_width = 75 })
   return MiniStatusline.combine_groups({
-    { hl = mode_hl, strings = { mode } },
+    { hl = mode_hl,                 strings = { mode } },
     { hl = "MiniStatuslineDevinfo", strings = { git, diagnostics } },
     "%<",
     { hl = "MiniStatuslineLspClient", strings = { clients } },
     { hl = "MiniStatuslineLspClient", strings = { progress } },
     "%=",
     { hl = "MiniStatuslineFileinfo", strings = { fileinfo } },
-    { hl = mode_hl, strings = { location } },
+    { hl = mode_hl,                  strings = { location } },
   })
 end
 
@@ -64,4 +64,10 @@ local opts = {
   use_icons = true,
   set_vim_settings = false,
 }
-require("mini.statusline").setup(opts)
+
+local ok_statusline, statusline = pcall(require, "mini.statusline")
+if not ok_statusline then
+  return
+end
+
+statusline.setup(opts)

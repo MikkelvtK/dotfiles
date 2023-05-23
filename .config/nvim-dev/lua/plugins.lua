@@ -16,7 +16,7 @@ function M.setup()
     },
     display = {
       open_fn = function()
-        return require("packer.util").float { border = "rounded" }
+        return require("packer.util").float({ border = "rounded" })
       end,
     },
   }
@@ -42,7 +42,7 @@ function M.setup()
     local packergrp = api.nvim_create_augroup("packer_user_config", { clear = true })
     api.nvim_create_autocmd(
       { "BufWritePost" },
-      { pattern = "init.lua", command = "source <afile> | PackerCompile", group = packergrp }
+      { pattern = "lua/plugins.lua", command = "source <afile> | PackerCompile", group = packergrp }
     )
   end
 
@@ -77,7 +77,7 @@ function M.setup()
     use {
       "folke/tokyonight.nvim",
       config = function()
-        cmd([[colorscheme tokyonight]])
+        vim.cmd [[colorscheme tokyonight-storm]]
       end,
       enable = true,
     }

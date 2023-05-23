@@ -1,7 +1,10 @@
 local M = {}
 
 function M.setup()
-	local whichkey = require "which-key"
+	local ok_whichkey, whichkey = pcall(require, "which-key")
+  if not ok_whichkey then
+    return
+  end
 
 	local conf = {
 		window = {
@@ -58,4 +61,3 @@ function M.setup()
 end
 
 return M
-			
