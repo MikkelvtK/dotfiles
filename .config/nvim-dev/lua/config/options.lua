@@ -20,14 +20,11 @@ opt.smartcase = true
 opt.updatetime = 250
 opt.signcolumn = "yes"
 opt.clipboard = "unnamedplus"
+opt.shiftwidth = 4
+opt.expandtab = true
+opt.tabstop = 4
+opt.softtabstop = 4
+opt.textwidth = 100
 
 -- Time in ms to wait for a mapped sequence to complete
 opt.timeoutlen = 300
-
--- Highlight on yank
-vim.cmd [[ 
-  augroup YankHighLight
-    autocmd!
-    autocmd TextYankPost * silent! lua vim.highlight.on_yank()
-  augroup end 
-]]
