@@ -1,3 +1,4 @@
+-- TODO: Setup a more custom LSP config
  return {
    {
     'VonHeikemen/lsp-zero.nvim',
