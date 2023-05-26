@@ -1,13 +1,9 @@
 return {
 	"nvim-lua/plenary.nvim",
+  "MunifTanjim/nui.nvim",
 	{
 		"nvim-tree/nvim-web-devicons",
 		config = { default = true },
-	},
-	{
-		"MunifTanjim/nui.nvim",
-		cmd = "Neotree reveal",
-		config = true,
 	},
 	{
 		"folke/tokyonight.nvim",
