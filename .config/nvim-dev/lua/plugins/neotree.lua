@@ -5,7 +5,7 @@ return {
       "MunifTanjim/nui.nvim",
     },
     keys = {
-      { "<leader>fe", "<cmd>Neotree reveal<cr>", desc = "File Tree" },
+      { "<leader>fe", "<cmd>Neotree toggle<cr>", desc = "File Tree" },
     },
     config = function ()
       vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])

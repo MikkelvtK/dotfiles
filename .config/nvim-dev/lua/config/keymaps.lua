@@ -1,5 +1,4 @@
 local keymap = vim.keymap.set
-local opts = { noremap = true, silent = true }
 
 -- Remap for dealing with word wrap
 keymap("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
@@ -33,4 +32,3 @@ keymap("n", "<S-Up>", "<cmd>resize +2<CR>")
 keymap("n", "<S-Down>", "<cmd>resize -2<CR>")
 keymap("n", "<S-Left>", "<cmd>vertical resize -2<CR>")
 keymap("n", "<S-Right>", "<cmd>vertical resize +2<CR>")
-
