@@ -5,6 +5,11 @@ return {
     config = { default = true },
   },
   {
+    "MunifTanjim/nui.nvim",
+    cmd = "Neotree reveal",
+    config = true,
+  },
+  {
     "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
@@ -16,7 +21,9 @@ return {
     "rcarriga/nvim-notify",
     event = "VeryLazy",
     enabled = true,
-    config = { default = true }, -- same as config = true
+    config = function()
+      vim.notify = require("notify")
+    end,
   },
   {
     "stevearc/dressing.nvim",
@@ -39,5 +46,10 @@ return {
     config = function(_, opts)
       require("mini.pairs").setup(opts)
     end,
+  },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    event = "BufReadPre",
+    config = true,
   },
 }
