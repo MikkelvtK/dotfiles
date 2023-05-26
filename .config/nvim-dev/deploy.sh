@@ -9,7 +9,7 @@ NV_DEV_NAME=nvim-dev
 NV_DEV_CONFIG=~/dotfiles/.config/$NV_DEV_NAME
 
 # Create a backup of the current setup
-rm -rf $NV_APP_BACKUP && mkdir -p $NV_APP_CONFIG
+rm -rf $NV_APP_BACKUP && mkdir -p $NV_APP_BACKUP
 cp -r $NV_APP_CONFIG/* $NV_APP_BACKUP
 
 # Deploy the dev setup to $NV_APP_CONFIG
