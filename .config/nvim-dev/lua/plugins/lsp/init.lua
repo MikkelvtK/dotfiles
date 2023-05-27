@@ -19,9 +19,11 @@ return {
       })
 
       local capabilities = utils.init_capabilities()
+      local on_attach = utils.on_attach
       for server, opts in pairs(servers) do
         opts = vim.tbl_extend("force", opts, {
-          capabilities = capabilities
+          on_attach = on_attach,
+          capabilities = capabilities,
         })
         lspconfig[server].setup(opts)
       end

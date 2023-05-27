@@ -55,7 +55,7 @@ return {
   },
   {
     "abecodes/tabout.nvim",
-    event = "VeryLazy",
+    event = "BufReadPre",
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
       "hrsh7th/nvim-cmp",
@@ -64,7 +64,7 @@ return {
   },
   {
     "andymass/vim-matchup",
-    lazy = false,
+    lazy = "BufReadPre",
     enabled = true,
     init = function()
       vim.g.matchup_matchparen_offscreen = { method = "popup" }
