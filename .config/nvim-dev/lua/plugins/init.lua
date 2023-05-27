@@ -38,14 +38,14 @@ return {
 	},
 	{
 		"echasnovski/mini.pairs",
-		event = "BufReadPre",
+		event = { "BufReadPre", "BufNewFile" },
 		config = function(_, opts)
 			require("mini.pairs").setup(opts)
 		end,
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
-		event = "BufReadPre",
+		event = { "BufReadPre", "BufNewFile" },
 		config = true,
 	},
   {
@@ -55,7 +55,7 @@ return {
   },
   {
     "abecodes/tabout.nvim",
-    event = "BufReadPre",
+		event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
       "hrsh7th/nvim-cmp",
@@ -64,7 +64,7 @@ return {
   },
   {
     "andymass/vim-matchup",
-    lazy = "BufReadPre",
+		event = { "BufReadPost", "BufNewFile" },
     enabled = true,
     init = function()
       vim.g.matchup_matchparen_offscreen = { method = "popup" }
