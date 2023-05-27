@@ -6,6 +6,7 @@ return {
       "williamboman/mason-lspconfig",
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-nvim-lsp-signature-help",
+      "simrat39/inlay-hints.nvim",
     },
     event = { "BufReadPre", "BufNewFile" },
     config = function()
@@ -13,6 +14,7 @@ return {
       local utils = require("plugins.lsp.utils")
       local lspconfig = require("lspconfig")
 
+      require("inlay-hints").setup()
       require("mason").setup({})
       require("mason-lspconfig").setup({
         ensure_installed = vim.tbl_keys(servers),
