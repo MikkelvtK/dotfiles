@@ -7,3 +7,5 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   group = highlight_grp,
   pattern = "*",
 })
+
+vim.print(vim.api.nvim_get_hl(0, {}))

@@ -1,33 +1,45 @@
-local M = {}
+local util = require("lspconfig/util")
 
-local servers = {
+return {
+  lua_ls = {
+    filetypes = { "lua" },
+    settings = {
+      Lua = {
+        diagnostics = {
+          globals = { "vim" },
+        },
+        workspace = {
+          checkThirdParty = false,
+        },
+        completion = { callSnippet = "Replace" },
+        telemetry = { enable = false },
+        hint = {
+          enable = true,
+        },
+      },
+    },
+  },
   gopls = {
     cmd = {"gopls", "serve"},
     filetypes = {"go", "gomod"},
+    root_dir = util.root_pattern("go.work", "go.mod", ".git"),
     settings = {
       gopls = {
         analyses = {
           unusedparams = true,
         },
+        hints = {
+          assignVariableTypes = true,
+          compositeLiteralFields = true,
+          compositeLiteralTypes = true,
+          constantValues = true,
+          functionTypeParameters = true,
+          parameterNames = true,
+          rangeVariableTypes = true,
+        },
         staticcheck = true,
+        semanticTokens = true,
       },
     },
   }
 }
-
-local function init(server, opts)
-  local lspconfig = require("lspconfig")
-  lspconfig[server].setup(opts)
-end
-
-function M.setup()
-  require("mason-lspconfig").setup({
-    ensure_installed = vim.tbl_keys(servers),
-  })
-  
-  for server, opts in pairs(servers) do
-    init(server, opts)
-  end
-end
-
-return M

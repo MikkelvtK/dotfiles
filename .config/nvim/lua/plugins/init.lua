@@ -6,11 +6,11 @@ return {
 		config = { default = true },
 	},
 	{
-		"folke/tokyonight.nvim",
+		"sainnhe/everforest",
 		lazy = false,
 		priority = 1000,
 		config = function()
-			vim.cmd([[colorscheme tokyonight-storm]])
+			vim.cmd([[colorscheme everforest]])
 		end,
 	},
 	{
@@ -38,14 +38,44 @@ return {
 	},
 	{
 		"echasnovski/mini.pairs",
-		event = "VeryLazy",
+		event = { "BufReadPre", "BufNewFile" },
 		config = function(_, opts)
 			require("mini.pairs").setup(opts)
 		end,
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
-		event = "BufReadPre",
+		event = { "BufReadPre", "BufNewFile" },
 		config = true,
 	},
+  {
+    "numToStr/comment.nvim",
+    opt = true,
+    keys = { "gc", "gcc", "gbc" }
+  },
+  {
+    "abecodes/tabout.nvim",
+		event = { "BufReadPre", "BufNewFile" },
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "hrsh7th/nvim-cmp",
+    },
+    config = true,
+  },
+  {
+    "andymass/vim-matchup",
+		event = { "BufReadPost", "BufNewFile" },
+    enabled = true,
+    init = function()
+      vim.g.matchup_matchparen_offscreen = { method = "popup" }
+    end,
+  },
+  {
+    "RRethy/vim-illuminate",
+    event = "BufReadPost",
+    opts = { delay = 200 },
+    config = function(_, opts)
+      require("illuminate").configure(opts)
+    end,
+  },
 }
