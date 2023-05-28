@@ -20,6 +20,7 @@ return {
         ensure_installed = vim.tbl_keys(servers),
       })
 
+      utils.handlers()
       local capabilities = utils.init_capabilities()
       local on_attach = utils.on_attach
       for server, opts in pairs(servers) do

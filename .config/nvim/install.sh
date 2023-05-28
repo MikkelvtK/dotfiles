@@ -13,3 +13,5 @@ stow --restow --target=$NVD_APP_CONFIG .
 alias nvd="NVIM_APPNAME=$NVD_APP_NAME nvim"
 
 export nvd
+
+nvd
