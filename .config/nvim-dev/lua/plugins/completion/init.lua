@@ -1,4 +1,4 @@
-return {
+:return {
   {
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
@@ -69,9 +69,6 @@ return {
           { name = "luasnip" },
           { name = "buffer" },
           { name = "path" },
-        },
-        window = {
-          documentation = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
         },
         formatting = {
           fields = { "abbr", "kind", "menu" },

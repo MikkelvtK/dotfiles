@@ -2,6 +2,8 @@ return {
   {
     "neovim/nvim-lspconfig",
     dependencies = {
+      { "folke/neodev.nvim",  config = true },
+      { "folke/neoconf.nvim", config = true },
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig",
       "hrsh7th/cmp-nvim-lsp",
@@ -14,12 +16,15 @@ return {
       local utils = require("plugins.lsp.utils")
       local lspconfig = require("lspconfig")
 
-      require("inlay-hints").setup()
+      require("inlay-hints").setup({
+        renderer = "inlay-hints/render/eol",
+      })
       require("mason").setup({})
       require("mason-lspconfig").setup({
         ensure_installed = vim.tbl_keys(servers),
       })
 
+      utils.handlers()
       local capabilities = utils.init_capabilities()
       local on_attach = utils.on_attach
       for server, opts in pairs(servers) do

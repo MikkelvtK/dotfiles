@@ -71,7 +71,7 @@ return {
           { name = "path" },
         },
         window = {
-          docmentation = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+          documentation = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
         },
         formatting = {
           fields = { "abbr", "kind", "menu" },
@@ -83,7 +83,6 @@ return {
         },
       }
 
-      -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
       cmp.setup.cmdline({ "/", "?" }, {
         mapping = cmp.mapping.preset.cmdline(),
         sources = {
@@ -91,7 +90,6 @@ return {
         },
       })
 
-      -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
       cmp.setup.cmdline(":", {
         mapping = cmp.mapping.preset.cmdline(),
         sources = cmp.config.sources({
@@ -114,16 +112,18 @@ return {
       history = true,
       delete_check_events = "TextChanged",
     },
-    -- stylua: ignore
     keys = {
       {
         "<tab>",
         function()
           return require("luasnip").jumpable(1) and "<Plug>luasnip-jump-next" or "<tab>"
         end,
-        expr = true, remap = true, silent = true, mode = "i",
+        expr = true,
+        remap = true,
+        silent = true,
+        mode = "i",
       },
-      { "<tab>", function() require("luasnip").jump(1) end, mode = "s" },
+      { "<tab>",   function() require("luasnip").jump(1) end,  mode = "s" },
       { "<s-tab>", function() require("luasnip").jump(-1) end, mode = { "i", "s" } },
     },
   },
