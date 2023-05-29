@@ -1,3 +1,4 @@
+-- TODO: Add more colorschemes and options to switch between them
 return {
   {
     "sainnhe/everforest",

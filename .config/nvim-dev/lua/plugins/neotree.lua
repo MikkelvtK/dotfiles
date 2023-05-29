@@ -1,3 +1,4 @@
+-- TODO: Move back to Nvim-tree
 return {
   {
     "nvim-neo-tree/neo-tree.nvim",
@@ -7,7 +8,7 @@ return {
     keys = {
       { "<leader>fe", "<cmd>Neotree toggle<cr>", desc = "File Tree" },
     },
-    config = function ()
+    config = function()
       vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
 
       require("neo-tree").setup({
@@ -77,9 +78,9 @@ return {
             nowait = true,
           },
           mappings = {
-            ["<space>"] = { 
-                "toggle_node", 
-                nowait = false,
+            ["<space>"] = {
+              "toggle_node",
+              nowait = false,
             },
             ["<2-LeftMouse>"] = "open",
             ["o"] = "open",
@@ -92,7 +93,7 @@ return {
             ["w"] = "open_with_window_picker",
             ["C"] = "close_node",
             ["z"] = "close_all_nodes",
-            ["a"] = { 
+            ["a"] = {
               "add",
               config = {
                 show_path = "none"
