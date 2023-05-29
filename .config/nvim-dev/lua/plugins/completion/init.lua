@@ -12,8 +12,8 @@ return {
       "onsails/lspkind.nvim",
     },
     config = function()
-      local cmp = require "cmp"
-      local lspkind = require "lspkind"
+      local cmp = require("cmp")
+      local lspkind = require("lspkind")
       local keymaps = require("plugins.completion.keymaps").set()
 
       cmp.setup {
