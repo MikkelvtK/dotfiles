@@ -4,7 +4,7 @@ NV_APP_NAME=nvim
 NV_APP_CONFIG=~/.config/$NV_APP_NAME
 NV_APP_DATA=~/.local/share/$NV_APP_NAME
 NV_APP_STATE=~/.local/state/$NV_APP_NAME
-NV_APP_BACKUP=~/dotfiles/.config/$NV_APP_NAME
+NV_APP_BACKUP=~/dotfiles/.config/nvim-backup
 NV_DEV_NAME=nvim-dev
 NV_DEV_CONFIG=~/dotfiles/.config/$NV_DEV_NAME
 
