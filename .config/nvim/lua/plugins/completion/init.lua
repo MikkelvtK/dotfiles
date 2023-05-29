@@ -1,4 +1,4 @@
-:return {
+return {
   {
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
@@ -63,6 +63,11 @@
             "c",
           }),
         },
+        window = {
+          documentation = {
+            winhighlight = "NormalFloat:NormalFloat,FloatBorder:TelescopeBorder",
+          }
+        },
         sources = cmp.config.sources {
           { name = "nvim_lsp_signature_help" },
           { name = "nvim_lsp" },
@@ -73,7 +78,7 @@
         formatting = {
           fields = { "abbr", "kind", "menu" },
           format = lspkind.cmp_format({
-            mode = 'symbol',
+            mode = 'symbol_text',
             maxwidth = 50,
             ellipsis_char = '...',
           }),

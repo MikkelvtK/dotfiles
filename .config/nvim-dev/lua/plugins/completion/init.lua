@@ -29,8 +29,22 @@ return {
         mapping = cmp.mapping.preset.insert {
           ["<C-b>"] = cmp.mapping.scroll_docs(-4),
           ["<C-f>"] = cmp.mapping.scroll_docs(4),
-          ["<C-Space>"] = cmp.mapping.complete(),
-          ["<C-e>"] = cmp.mapping.abort(),
+          ["<C-Space>"] = cmp.mapping({
+            i = function()
+              if cmp.visible() then
+                cmp.abort()
+              else
+                cmp.complete()
+              end
+            end,
+            c = function()
+              if cmp.visible() then
+                cmp.close()
+              else
+                cmp.complete()
+              end
+            end
+          }),
           ["<CR>"] = cmp.mapping.confirm { select = true },
           ["<C-j>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
@@ -63,6 +77,11 @@ return {
             "c",
           }),
         },
+        window = {
+          documentation = {
+            winhighlight = "NormalFloat:NormalFloat,FloatBorder:TelescopeBorder",
+          }
+        },
         sources = cmp.config.sources {
           { name = "nvim_lsp_signature_help" },
           { name = "nvim_lsp" },
@@ -73,7 +92,7 @@ return {
         formatting = {
           fields = { "abbr", "kind", "menu" },
           format = lspkind.cmp_format({
-            mode = 'symbol',
+            mode = 'symbol_text',
             maxwidth = 50,
             ellipsis_char = '...',
           }),
