@@ -1,3 +1,4 @@
+-- TODO: Add function that checks if servers are install on homescreen
 return {
   {
     "neovim/nvim-lspconfig",
