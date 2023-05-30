@@ -9,7 +9,7 @@ make it stable. I've included a few scripts that will help setup the config.
 The install script will (you guessed it!) install a dedicated environment
 that operates separately from your Neovim config. After running the install
 script, the environment can be reached with the `nvd` command. Use this
-environment to try out the script or change any parts of the config.
+environment to try it out or change any parts of the config.
 
 To run the script: <br>
 
