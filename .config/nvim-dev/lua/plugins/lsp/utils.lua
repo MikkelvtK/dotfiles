@@ -1,22 +1,30 @@
 local M = {}
 
+--- to_diagnostic returns the movement action function for navigating
+--- diagnostics.
+-- @tparam boolean next decides whether to next diagnostic or previous
+-- @tparam string severity indicates the severity of the diagnostic
+-- @treturn returns the function that will take the action
+local function to_diagnostic(next, severity)
+  local fn = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
+  severity = severity and vim.diagnostic.severity[severity] or nil
+  return function()
+    fn { severity = severity }
+  end
+end
+
 function M.on_attach(client, bufnr)
   local keymap = vim.keymap.set
 
+  -- TODO: Add keymaps for function definitions via LSP
   keymap("n", "K", vim.lsp.buf.hover, { buffer = bufnr, desc = "Hover" })
   keymap("n", "gK", vim.lsp.buf.signature_help, { buffer = bufnr, desc = "Signature Help" })
-  keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", { desc = "Prev Diagnostic" })
-  keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", { desc = "Next Diagnostic" })
-
-  -- TODO: Create a function to handle the mapping
-  keymap("n", "[e", "<cmd>lua vim.diagnostic.goto_prev({severity = vim.diagnostic.severity.ERROR})<CR>",
-    { desc = "Prev Error" })
-  keymap("n", "]e", "<cmd>lua vim.diagnostic.goto_next({severity = vim.diagnostic.severity.ERROR})<CR>",
-    { desc = "Next Error" })
-  keymap("n", "[w", "<cmd>lua vim.diagnostic.goto_prev({severity = vim.diagnostic.severity.WARNING})<CR>",
-    { desc = "Prev Warning" })
-  keymap("n", "]w", "<cmd>lua vim.diagnostic.goto_next({severity = vim.diagnostic.severity.WARNING})<CR>",
-    { desc = "Next Warning" })
+  keymap("n", "[d", to_diagnostic(false), { desc = "Prev Diagnostic" })
+  keymap("n", "]d", to_diagnostic(true), { desc = "Next Diagnostic" })
+  keymap("n", "[e", to_diagnostic(false, "ERROR"), { desc = "Prev Error" })
+  keymap("n", "]e", to_diagnostic(true, "ERROR"), { desc = "Next Error" })
+  keymap("n", "[w", to_diagnostic(false, "WARNING"), { desc = "Prev Warning" })
+  keymap("n", "]w", to_diagnostic(true, "WARNING"), { desc = "Next Warning" })
 
   if client.supports_method("textDocument/formatting") then
     vim.api.nvim_create_autocmd({ "BufWritePre" }, {

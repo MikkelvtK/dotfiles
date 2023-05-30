@@ -5,7 +5,11 @@ return {
     snippet_engine = "luasnip",
     enabled = true,
     languages = {
-      -- TODO: Add Go support
+      go = {
+        template = {
+          annotation_convention = "godoc",
+        }
+      },
       lua = {
         template = {
           annotation_convention = "ldoc",
