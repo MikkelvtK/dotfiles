@@ -1,4 +1,3 @@
--- TODO: Create README files
 return {
   "nvim-lua/plenary.nvim",
   "MunifTanjim/nui.nvim",
@@ -70,6 +69,14 @@ return {
     opts = { delay = 200 },
     config = function(_, opts)
       require("illuminate").configure(opts)
+    end,
+  },
+  {
+    "iamcco/markdown-preview.nvim",
+    ft = { "markdown" },
+    build = "cd app && npm install",
+    init = function()
+      vim.g.mkdp_filetypes = { "markdown" }
     end,
   },
 }
