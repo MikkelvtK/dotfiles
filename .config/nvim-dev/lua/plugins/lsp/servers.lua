@@ -5,11 +5,19 @@ return {
     filetypes = { "lua" },
     settings = {
       Lua = {
+        runtime = {
+          version = 'LuaJIT',
+          path = vim.split(package.path, ';')
+        },
         diagnostics = {
-          globals = { "vim" },
+          globals = { "vim", "describe", "it", "before_each", "after_each", "packer_plugins" },
         },
         workspace = {
           checkThirdParty = false,
+          library = {
+            [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+            [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true
+          }
         },
         completion = { callSnippet = "Replace" },
         telemetry = { enable = false },
