@@ -25,9 +25,8 @@ opt.expandtab = true
 opt.tabstop = 4
 opt.softtabstop = 4
 opt.textwidth = 80
-opt.formatoptions = "cqt"
-opt.formatexpr = "cqt"
-opt.wrapmargin = 5
+opt.wrap = true
+opt.formatoptions = "cqtw"
 opt.linebreak = true
 
 -- Time in ms to wait for a mapped sequence to complete
