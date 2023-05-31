@@ -2,6 +2,12 @@ return {
   "nvim-lua/plenary.nvim",
   "MunifTanjim/nui.nvim",
   {
+    "nvim-lua/plenary.nvim",
+    keys = {
+      { "<leader>t", "<Plug>PlenaryTestFile", desc = "Plenary Test File" },
+    },
+  },
+  {
     "nvim-tree/nvim-web-devicons",
     config = { default = true },
   },
