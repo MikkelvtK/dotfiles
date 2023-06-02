@@ -6,7 +6,7 @@ return {
   auto_install = true,
   config = function()
     require("nvim-treesitter.configs").setup({
-      ensure_installed = { "lua", "go", "vim", },
+      ensure_installed = { "lua", "go", "vim", "bash" },
     })
   end,
 
