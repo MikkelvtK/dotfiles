@@ -17,7 +17,6 @@ opt.breakindent = true
 opt.undofile = true
 opt.ignorecase = true
 opt.smartcase = true
-opt.updatetime = 250
 opt.signcolumn = "yes"
 opt.clipboard = "unnamedplus"
 opt.shiftwidth = 4
@@ -25,8 +24,6 @@ opt.expandtab = true
 opt.tabstop = 4
 opt.softtabstop = 4
 opt.textwidth = 80
-opt.wrap = true
-opt.formatoptions = "cqtw"
 opt.linebreak = true
 
 -- Time in ms to wait for a mapped sequence to complete

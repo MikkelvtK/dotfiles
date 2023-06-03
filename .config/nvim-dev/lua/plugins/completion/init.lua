@@ -18,7 +18,7 @@ return {
 
       cmp.setup {
         completion = {
-          completeopt = "menu,menuone,noinsert,preview",
+          completeopt = "menu,menuone,noinsert",
         },
         snippet = {
           expand = function(args)
@@ -26,11 +26,6 @@ return {
           end,
         },
         mapping = cmp.mapping.preset.insert(keymaps),
-        window = {
-          documentation = {
-            winhighlight = "NormalFloat:NormalFloat,FloatBorder:TelescopeBorder",
-          }
-        },
         sources = cmp.config.sources {
           { name = "nvim_lsp_signature_help" },
           { name = "nvim_lsp" },

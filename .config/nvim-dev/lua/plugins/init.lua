@@ -52,15 +52,6 @@ return {
     config = true,
   },
   {
-    "abecodes/tabout.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-      "hrsh7th/nvim-cmp",
-    },
-    config = true,
-  },
-  {
     "andymass/vim-matchup",
     event = { "BufReadPost", "BufNewFile" },
     enabled = true,
