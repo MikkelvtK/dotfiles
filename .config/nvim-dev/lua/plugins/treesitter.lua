@@ -6,12 +6,26 @@ return {
   auto_install = true,
   config = function()
     require("nvim-treesitter.configs").setup({
-      ensure_installed = { "lua", "go", "vim", },
+      highlight = { enable = true },
+      ensure_installed = {
+        "bash",
+        "go",
+        "dockerfile",
+        "html",
+        "lua",
+        "luadoc",
+        "luap",
+        "markdown",
+        "markdown_inline",
+        "org",
+        "query",
+        "regex",
+        "latex",
+        "vim",
+        "vimdoc",
+        "yaml",
+      },
     })
-
-    for _, group in ipairs(vim.fn.getcompletion("@lsp", "highlight")) do
-      vim.api.nvim_set_hl(0, group, {})
-    end
   end,
 
   -- TODO: Add functionality to hop functions

@@ -1,6 +1,15 @@
 return {
   "MunifTanjim/nui.nvim",
   {
+    "abecodes/tabout.nvim",
+    event = "BufReadPost",
+    dependencies = {
+      "nvim-cmp",
+      "nvim-treesitter",
+    },
+    config = true,
+  },
+  {
     "nvim-lua/plenary.nvim",
     keys = {
       { "<leader>t", "<Plug>PlenaryTestFile", desc = "Plenary Test File" },
