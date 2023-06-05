@@ -1,5 +1,4 @@
 return {
-  "MunifTanjim/nui.nvim",
   {
     "abecodes/tabout.nvim",
     event = "BufReadPost",

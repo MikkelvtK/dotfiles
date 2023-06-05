@@ -53,18 +53,17 @@ function M.handlers()
     float = {
       focusable = true,
       style = "minimal",
-      border = "rounded",
+      border = { "🭽", "▔", "🭾", "▕", "🭿", "▁", "🭼", "▏" },
     },
     diagnostic = {
       virtual_text = true,
       float = {
         focusable = true,
         style = "minimal",
-        border = "rounded",
+        border = { "🭽", "▔", "🭾", "▕", "🭿", "▁", "🭼", "▏" },
       },
     },
   }
-
   local diagnostic_signs = {
     { name = "DiagnosticSignError", text = "" },
     { name = "DiagnosticSignWarn",  text = "" },
