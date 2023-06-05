@@ -4,6 +4,9 @@ return {
   event = "BufReadPre",
   sync_install = false,
   auto_install = true,
+  matchup = {
+    enable = true,
+  },
   config = function()
     require("nvim-treesitter.configs").setup({
       highlight = { enable = true },

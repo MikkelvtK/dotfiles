@@ -1,8 +1,3 @@
--- TODO: Change formatting
--- Change text and border color to white
--- Add ordering
--- Add source of completion in window
--- Move away from lspkind
 return {
   {
     "hrsh7th/nvim-cmp",
@@ -18,12 +13,26 @@ return {
     },
     config = function()
       local cmp = require("cmp")
+      local compare = require("cmp.config.compare")
       local lspkind = require("lspkind")
       local keymaps = require("plugins.completion.keymaps").setup()
 
       cmp.setup {
         completion = {
           completeopt = "menu,menuone,noinsert",
+        },
+        sorting = {
+          priority_weight = 2,
+          comparators = {
+            compare.score,
+            compare.recently_used,
+            compare.offset,
+            compare.exact,
+            compare.kind,
+            compare.sort_text,
+            compare.length,
+            compare.order,
+          },
         },
         snippet = {
           expand = function(args)
@@ -32,27 +41,33 @@ return {
         },
         mapping = cmp.mapping.preset.insert(keymaps),
         sources = cmp.config.sources {
-          { name = "nvim_lsp_signature_help" },
-          { name = "nvim_lsp" },
-          { name = "luasnip" },
-          { name = "buffer" },
-          { name = "path" },
+          { name = "nvim_lsp_signature_help", group_index = 1, },
+          { name = "nvim_lsp",                group_index = 1, },
+          { name = "luasnip",                 group_index = 1, },
+          { name = "buffer",                  group_index = 2, },
+          { name = "path",                    group_index = 2, },
         },
         formatting = {
           fields = { "abbr", "kind", "menu", },
           format = lspkind.cmp_format({
             mode = "symbol_text",
+            menu = ({
+              buffer = "[Buffer]",
+              nvim_lsp = "[LSP]",
+              luasnip = "[LuaSnip]",
+              path = "[Path]",
+            }),
           }),
         },
         window = {
           completion = {
-            border = "rounded",
+            border = { "🭽", "▔", "🭾", "▕", "🭿", "▁", "🭼", "▏" },
             winhighlight =
-            "Normal:CompeDocumentation,FloatBorder:CompeDocumentationBorder,CursorLine:Pmenusel,Search:None",
+            "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None",
             side_padding = 0,
           },
           documentation = {
-            border = "rounded",
+            border = { "🭽", "▔", "🭾", "▕", "🭿", "▁", "🭼", "▏" },
             winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
             side_paddiing = 0,
           }

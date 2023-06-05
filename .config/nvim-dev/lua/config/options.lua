@@ -13,6 +13,7 @@ g.maplocalleader = " "
 
 -- General settings
 opt.termguicolors = true
+opt.cursorline = true
 opt.hlsearch = true
 opt.number = true
 opt.relativenumber = true
