@@ -1,4 +1,8 @@
--- TODO: Set more options for completion and documentation windows (highlighting)
+-- TODO: Change formatting
+-- Change text and border color to white
+-- Add ordering
+-- Add source of completion in window
+-- Move away from lspkind
 return {
   {
     "hrsh7th/nvim-cmp",
@@ -34,15 +38,24 @@ return {
           { name = "buffer" },
           { name = "path" },
         },
-        window = {
-          completion = cmp.config.window.bordered(),
-          documentation = cmp.config.window.bordered(),
-        },
         formatting = {
-          fields = { "kind", "abbr", "menu" },
+          fields = { "abbr", "kind", "menu", },
           format = lspkind.cmp_format({
-            mode = "text",
+            mode = "symbol_text",
           }),
+        },
+        window = {
+          completion = {
+            border = "rounded",
+            winhighlight =
+            "Normal:CompeDocumentation,FloatBorder:CompeDocumentationBorder,CursorLine:Pmenusel,Search:None",
+            side_padding = 0,
+          },
+          documentation = {
+            border = "rounded",
+            winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+            side_paddiing = 0,
+          }
         },
       }
 
