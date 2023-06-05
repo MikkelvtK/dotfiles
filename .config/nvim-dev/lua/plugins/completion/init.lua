@@ -1,3 +1,4 @@
+-- TODO: Set more options for completion and documentation windows (highlighting)
 return {
   {
     "hrsh7th/nvim-cmp",
@@ -14,7 +15,7 @@ return {
     config = function()
       local cmp = require("cmp")
       local lspkind = require("lspkind")
-      local keymaps = require("plugins.completion.keymaps").set()
+      local keymaps = require("plugins.completion.keymaps").setup()
 
       cmp.setup {
         completion = {
@@ -38,11 +39,9 @@ return {
           documentation = cmp.config.window.bordered(),
         },
         formatting = {
-          fields = { "abbr", "kind", "menu" },
+          fields = { "kind", "abbr", "menu" },
           format = lspkind.cmp_format({
-            mode = 'symbol_text',
-            maxwidth = 50,
-            ellipsis_char = '...',
+            mode = "text",
           }),
         },
       }

@@ -1,6 +1,6 @@
 local M = {}
 
-function M.set()
+function M.setup()
   local cmp = require("cmp")
   local luasnip = require("luasnip")
   local neogen = require("neogen")
