@@ -1,23 +1,18 @@
 return {
-  "nvim-treesitter/nvim-treesitter",
-  build = ":TSUpdate",
-  event = "BufReadPre",
-  sync_install = false,
-  auto_install = true,
-  matchup = {
-    enable = true,
-  },
-  config = function()
-    require("nvim-treesitter.configs").setup({
-      highlight = { enable = true },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter-textobjects",
+      "JoosepAlviste/nvim-ts-context-commentstring",
+    },
+    build = ":TSUpdate",
+    event = { "BufReadPost", "BufNewFile" },
+    opts = {
+      sync_install = false,
       ensure_installed = {
         "bash",
-        "go",
         "dockerfile",
         "html",
-        "lua",
-        "luadoc",
-        "luap",
         "markdown",
         "markdown_inline",
         "org",
@@ -28,8 +23,49 @@ return {
         "vimdoc",
         "yaml",
       },
-    })
-  end,
-
-  -- TODO: Add functionality to hop functions
+      highlight = { enable = true, additional_vim_regex_highlighting = { "org", "markdown" } },
+      indent = { enable = true },
+      context_commentstring = { enable = true, enable_autocmd = false },
+      incremental_selection = {
+        enable = true,
+        keymaps = {
+          init_selection = "<c-space>",
+          node_incremental = "<c-space>",
+          scope_incremental = "<c-s>",
+          node_decremental = "<M-space>",
+        },
+      },
+      textobjects = {
+        select = {
+          enable = true,
+          lookahead = true,
+          keymaps = {
+            ["aa"] = "@parameter.outer",
+            ["ia"] = "@parameter.inner",
+            ["af"] = "@function.outer",
+            ["if"] = "@function.inner",
+            ["ac"] = "@class.outer",
+            ["ic"] = "@class.inner",
+          },
+        },
+      },
+      matchup = {
+        enable = true,
+      },
+    },
+    config = function(_, opts)
+      if type(opts.ensure_installed) == "table" then
+        ---@type table<string, boolean>
+        local added = {}
+        opts.ensure_installed = vim.tbl_filter(function(lang)
+          if added[lang] then
+            return false
+          end
+          added[lang] = true
+          return true
+        end, opts.ensure_installed)
+      end
+      require("nvim-treesitter.configs").setup(opts)
+    end,
+  },
 }

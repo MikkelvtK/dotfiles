@@ -1,5 +1,16 @@
 return {
   {
+    "nvim-lua/plenary.nvim",
+    keys = {
+      { "<leader>t", "<Plug>PlenaryTestFile", desc = "Plenary Test File" },
+    },
+  },
+  {
+    "stevearc/dressing.nvim",
+    event = "VeryLazy",
+    config = true,
+  },
+  {
     "abecodes/tabout.nvim",
     event = "BufReadPost",
     dependencies = {
@@ -9,27 +20,12 @@ return {
     config = true,
   },
   {
-    "nvim-lua/plenary.nvim",
-    keys = {
-      { "<leader>t", "<Plug>PlenaryTestFile", desc = "Plenary Test File" },
-    },
-  },
-  {
-    "nvim-tree/nvim-web-devicons",
-    config = { default = true },
-  },
-  {
     "rcarriga/nvim-notify",
     event = "VeryLazy",
     enabled = true,
     config = function()
       vim.notify = require("notify")
     end,
-  },
-  {
-    "stevearc/dressing.nvim",
-    event = "VeryLazy",
-    config = true,
   },
   {
     "TimUntersberger/neogit",
@@ -75,4 +71,13 @@ return {
       require("illuminate").configure(opts)
     end,
   },
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    opts = {
+      defaults = {
+        ["<leader>g"] = { name = "+Git" },
+      },
+    },
+  }
 }
