@@ -13,7 +13,11 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- Configure lazy.nvim
-require("lazy").setup("plugins", {
+require("lazy").setup({
+  spec = {
+    { import = "plugins" },
+    { import = "setup" },
+  },
   defaults = { lazy = true, version = nil },
   install = { missing = true, colorscheme = { "tokyonight" } },
   checker = { enabled = true },

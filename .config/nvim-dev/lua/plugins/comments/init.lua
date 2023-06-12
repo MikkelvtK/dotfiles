@@ -10,4 +10,10 @@ return {
       { "<leader>cT", "<cmd>TodoTelescope<cr>",                            desc = "ToDo" },
     },
   },
+  {
+    "numToStr/Comment.nvim",
+    opt = true,
+    keys = { "gc", "gb", "gcc", "gcb" },
+    config = true,
+  },
 }

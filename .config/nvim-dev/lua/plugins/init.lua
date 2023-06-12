@@ -50,12 +50,6 @@ return {
     config = true,
   },
   {
-    "numToStr/Comment.nvim",
-    opt = true,
-    keys = { "gc", "gb", "gcc", "gcb" },
-    config = true,
-  },
-  {
     "andymass/vim-matchup",
     event = { "BufReadPost", "BufNewFile" },
     enabled = true,
