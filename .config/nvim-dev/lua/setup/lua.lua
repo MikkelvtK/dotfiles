@@ -1,5 +1,15 @@
 return {
   {
+    "nvim-treesitter/nvim-treesitter",
+    opts = function(_, opts)
+      vim.list_extend(opts.ensure_installed, {
+        "lua",
+        "luadoc",
+        "luap",
+      })
+    end
+  },
+  {
     "neovim/nvim-lspconfig",
     dependencies = {
       "folke/neodev.nvim",

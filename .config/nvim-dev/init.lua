@@ -1,3 +1,4 @@
+-- TODO: Optimise loading
 require("config.options")
 require("config.lazy")
 
