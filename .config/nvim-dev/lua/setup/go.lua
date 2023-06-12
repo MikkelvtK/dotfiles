@@ -35,6 +35,9 @@ return {
     opts = {
       servers = {
         gopls = {
+          cmd = { "gopls", "serve", },
+          filetypes = { "go", "gomod" },
+          root_dir = require("lspconfig.util").root_pattern("go.work", "go.mod", ".git"),
           settings = {
             gopls = {
               analyses = {
@@ -58,7 +61,16 @@ return {
       },
       setup = {
         gopls = function(_, _)
-          local utils = require "plugins.lsp.utils"
+          local group = vim.api.nvim_create_augroup("GoFormat", {})
+          vim.api.nvim_create_autocmd("BufWritePre", {
+            pattern = "*.go",
+            callback = function()
+              require("go.format").goimport()
+            end,
+            group = group,
+          })
+
+          local utils = require("plugins.lsp.utils")
           utils.on_attach(function(client, bufnr)
             local map = function(mode, lhs, rhs, desc)
               if desc then
