@@ -1,19 +1,14 @@
 return {
   {
     "nvim-tree/nvim-web-devicons",
-    dependencies = { "DaikyXendo/nvim-material-icon" },
-    config = function()
-      require("nvim-web-devicons").setup {
-        override = require("nvim-material-icon").get_icons(),
-      }
-    end,
+    config = { default = true },
   },
   {
-    "rebelot/kanagawa.nvim",
+    "tanvirtin/monokai.nvim",
     lazy = false,
     priority = 1000,
     config = function()
-      vim.cmd([[colorscheme kanagawa]])
+      vim.cmd([[colorscheme monokai]])
     end
   },
 }

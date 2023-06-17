@@ -46,6 +46,7 @@ return {
                 { buffer = bufnr, desc = "OSV Launch" })
             end
 
+            -- FIX:inlay hints not working for lua
             require("inlay-hints").on_attach(client, bufnr)
           end)
         end,
