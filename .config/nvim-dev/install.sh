@@ -3,6 +3,7 @@
 # TODO: Check if dependencies are installed
 # - neovim
 # - ripgrep
+# - shellcheck
 
 NVD_APP_NAME=nvim-dev
 NVD_APP_CONFIG=~/.config/$NVD_APP_NAME
