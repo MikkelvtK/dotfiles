@@ -7,7 +7,6 @@ return {
       "williamboman/mason-lspconfig",
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-nvim-lsp-signature-help",
-      "simrat39/inlay-hints.nvim",
     },
     event = { "BufReadPre", "BufNewFile" },
     config = function(plugin, opts)

@@ -12,8 +12,11 @@ return {
   {
     "neovim/nvim-lspconfig",
     dependencies = {
-      "folke/neodev.nvim",
-      opts = {},
+      {
+        "folke/neodev.nvim",
+        opts = {}
+      },
+      "simrat39/inlay-hints.nvim",
     },
     opts = {
       servers = {
@@ -29,7 +32,7 @@ return {
               completion = { callSnippet = "Replace" },
               telemetry = { enable = false },
               hint = {
-                enable = false,
+                enable = true,
               },
             },
           },
@@ -46,7 +49,6 @@ return {
                 { buffer = bufnr, desc = "OSV Launch" })
             end
 
-            -- FIX:inlay hints not working for lua
             require("inlay-hints").on_attach(client, bufnr)
           end)
         end,
