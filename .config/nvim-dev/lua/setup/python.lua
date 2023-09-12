@@ -15,7 +15,7 @@ return {
   {
     "williamboman/mason.nvim",
     opts = function(_, opts)
-      vim.list_extend(opts.ensure_installed, { "debugpy", "black", "ruff" })
+      vim.list_extend(opts.ensure_installed or {}, { "debugpy", "black", "ruff" })
     end,
   },
   {
@@ -39,7 +39,7 @@ return {
       },
       setup = {
         pyright = function(_, _)
-          local lsp_utils = require "base.lsp.utils"
+          local lsp_utils = require "plugins.lsp.utils"
           lsp_utils.on_attach(function(client, bufnr)
             local map = function(mode, lhs, rhs, desc)
               if desc then
