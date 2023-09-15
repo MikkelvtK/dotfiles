@@ -33,7 +33,6 @@ return {
         sources = {
           nls.builtins.formatting.shfmt,
           nls.builtins.diagnostics.actionlint,
-          nls.builtins.formatting.yamlfix,
         },
       }
     end,

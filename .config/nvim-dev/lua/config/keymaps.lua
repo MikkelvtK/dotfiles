@@ -19,6 +19,10 @@ keymap("v", ">", ">gv")
 -- Paste over currently selected text without yanking it
 keymap("v", "p", '"_dP')
 
+-- Enter new line without going into insert mode
+keymap("n", "<leader>o", "o<ESC>")
+keymap("n", "<leader>O", "O<ESC>")
+
 -- Move Lines
 keymap("n", "<A-j>", ":m .+1<CR>==")
 keymap("v", "<A-j>", ":m '>+1<CR>gv=gv")
