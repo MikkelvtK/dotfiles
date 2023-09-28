@@ -15,16 +15,16 @@ return {
           settings = {
             typescript = {
               format = {
-                indentSize = vim.o.shiftwidth,
-                convertTabsToSpaces = vim.o.expandtab,
-                tabSize = vim.o.tabstop,
+                indentSize = vim.bo.shiftwidth,
+                convertTabsToSpaces = vim.bo.expandtab,
+                tabSize = vim.bo.tabstop,
               },
             },
             javascript = {
               format = {
-                indentSize = vim.o.shiftwidth,
-                convertTabsToSpaces = vim.o.expandtab,
-                tabSize = vim.o.tabstop,
+                indentSize = vim.bo.shiftwidth,
+                convertTabsToSpaces = vim.bo.expandtab,
+                tabSize = vim.bo.tabstop,
               },
             },
             completions = {
