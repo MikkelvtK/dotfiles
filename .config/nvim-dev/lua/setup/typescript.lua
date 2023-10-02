@@ -7,17 +7,26 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
-    dependencies = { "jose-elias-alvarez/typescript.nvim" },
+    dependencies = {
+      "jose-elias-alvarez/typescript.nvim",
+      "simrat39/inlay-hints.nvim"
+    },
     opts = {
       servers = {
         ---Typescript
         tsserver = {
           settings = {
             typescript = {
+              inlayHints = {
+                includeInlayEnumMemberValueHints = true,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+                includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayVariableTypeHints = true,
+              },
               format = {
-                indentSize = vim.bo.shiftwidth,
-                convertTabsToSpaces = vim.bo.expandtab,
-                tabSize = vim.bo.tabstop,
               },
             },
             javascript = {
@@ -49,6 +58,8 @@ return {
               -- stylua: ignore
               vim.keymap.set("n", "<leader>lR", "<cmd>TypescriptRenameFile<CR>", { desc = "Rename File", buffer = bufnr })
             end
+
+            require("inlay-hints").on_attach(client, bufnr)
           end)
           require("typescript").setup { server = opts }
           return true
