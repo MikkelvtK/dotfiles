@@ -13,8 +13,18 @@ return {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
-        elixirls = {},
+        elixirls = {
+          cmd = { os.getenv("HOME") .. "/.local/share/elixir-ls/release/language_server.sh" },
+        },
       },
+    },
+    setup = {
+      elixirls = function(_, _)
+        local utils = require("plugins.lsp.utils")
+        utils.on_attach(function(client, bufnr)
+          require("inlay-hints").on_attach(client, bufnr)
+        end)
+      end,
     },
   },
   {
