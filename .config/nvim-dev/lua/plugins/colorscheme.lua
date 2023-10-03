@@ -4,11 +4,26 @@ return {
     config = { default = true },
   },
   {
-    "tanvirtin/monokai.nvim",
+    "rebelot/kanagawa.nvim",
     lazy = false,
     priority = 1000,
-    config = function()
-      vim.cmd([[colorscheme monokai]])
-    end
+    opts = {
+      commentStyle = { italic = false },
+      keywordStyle = { italic = false },
+      colors = {
+        theme = {
+          all = {
+            ui = {
+              bg_gutter = "none",
+            },
+          },
+        },
+      },
+      theme = "wave",
+    },
+    config = function(_, opts)
+      require("kanagawa").setup(opts)
+      vim.cmd([[colorscheme kanagawa-wave]])
+    end,
   },
 }
