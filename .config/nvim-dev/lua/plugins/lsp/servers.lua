@@ -3,8 +3,11 @@ local utils = require("plugins.lsp.utils")
 local M = {}
 
 function M.setup(_, opts)
+  local servers = opts.servers
+  local capabilities = utils.init_capabilities()
+
   utils.on_attach(function(client, bufnr)
-    require("plugins.lsp.format").on_attach(client, bufnr)
+    -- require("plugins.lsp.format").on_attach(client, bufnr)
     require("plugins.lsp.keymaps").on_attach(client, bufnr)
   end)
 
@@ -12,9 +15,6 @@ function M.setup(_, opts)
   require("inlay-hints").setup({
     renderer = "inlay-hints/render/eol",
   })
-
-  local servers = opts.servers
-  local capabilities = utils.init_capabilities()
 
   local function setup(server)
     local server_opts = vim.tbl_deep_extend("force", {
@@ -57,8 +57,8 @@ function M.setup(_, opts)
   end
 
   if have_mason then
-    mlsp.setup { ensure_installed = ensure_installed }
-    mlsp.setup_handlers { setup }
+    mlsp.setup({ ensure_installed = ensure_installed })
+    mlsp.setup_handlers({ setup })
   end
 end
 

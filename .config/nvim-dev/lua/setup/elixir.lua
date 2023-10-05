@@ -15,6 +15,11 @@ return {
       servers = {
         elixirls = {
           cmd = { os.getenv("HOME") .. "/.local/share/elixir-ls/release/language_server.sh" },
+          settings = {
+            elixirLS = {
+              dialyzerEnabled = false,
+            },
+          },
         },
       },
     },
