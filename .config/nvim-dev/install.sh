@@ -9,6 +9,8 @@
 # - elixerls
 # - oh my zsh
 # - powerlevel10k
+# - inotify-tools
+# - postgres
 
 NVD_APP_NAME=nvim-dev
 NVD_APP_CONFIG=~/.config/$NVD_APP_NAME
